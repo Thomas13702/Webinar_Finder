@@ -1,0 +1,129 @@
+.header {
+  display: flex;
+  background: #24252a;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 40px;
+  height: 80px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.logoNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo {
+  color: White;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.navOptions {
+  padding-left: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 50px;
+  list-style-type: none;
+}
+.mobileOption {
+  display: none;
+}
+
+.option :hover {
+  color: #ccc;
+}
+.signinUp {
+  display: flex;
+  padding: 0px 5px;
+  list-style-type: none;
+}
+.signIn {
+  padding-right: 50px;
+  align-self: center;
+}
+.signIn :hover {
+  color: white;
+}
+.signupBtn {
+  padding: 10px 10px;
+  height: 2.4rem;
+  border-radius: 3px;
+  background: #0586a8;
+  color: white;
+  cursor: pointer;
+  align-items: center;
+}
+@media (min-width: 730px) {
+  .mobileMenu {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+  }
+}
+
+@media (max-width: 730px) {
+  /*Mobile View */
+  .header {
+    padding: 0px 10px;
+  }
+  .logo {
+    width: 165px;
+    height: 45px;
+  }
+  .navOptions {
+    display: flex;
+    width: 100%;
+    height: 350px;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 0;
+    transition: all 0s ease;
+    flex-direction: column;
+    list-style-type: none;
+    grid-gap: 0px;
+  }
+  .navOptions.active {
+    background: #444444;
+    left: 0;
+    opacity: 1;
+    transition: all 0s ease;
+    z-index: 1;
+    align-content: center;
+    padding-left: 0px;
+  }
+
+  .menuIcon {
+    width: 45px;
+    height: 45px;
+    color: #0586a8;
+  }
+  .option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vw;
+    padding: 30px 0px;
+  }
+  .signUp {
+    background: #0586a8;
+    border-radius: 3px;
+    color: white;
+    padding: 20px 0px;
+    width: 80%;
+    align-self: center;
+
+    text-align: center;
+  }
+
+  .signinUp {
+    display: none;
+  }
+}
+.mobileMenu {
+  display: block;
+}
