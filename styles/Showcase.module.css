@@ -1,0 +1,82 @@
+.flexContainer {
+  display: flex;
+  margin: 5rem 10% 0 10%;
+  width: auto;
+  height: 560px;
+}
+.container1 {
+  font-size: 2rem;
+  flex: 1;
+  background-color: white;
+}
+
+.container1 .text {
+  color: black;
+  width: 75%;
+  font-size: 30px;
+}
+.container2 {
+  flex: 1;
+
+  background: rgb(255, 255, 255) url("/images/webinar.jpg") no-repeat center
+    center;
+  background-size: auto;
+  height: 400px;
+  width: 600px;
+}
+
+.overlayText {
+  color: darkgrey;
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 9px;
+}
+
+.p {
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .flexContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 600px;
+  }
+
+  .container2 {
+    position: relative;
+    background-size: auto;
+    height: 100%;
+    width: 100%;
+  }
+
+  .container1 .text {
+    font-size: 20px;
+  }
+}
+
+.myButton {
+  background-color: #0585a8;
+  border-radius: 42px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  padding: 9px 21px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #2f6627;
+}
+.myButton:hover {
+  background-color: #5cbf2a;
+}
+.myButton:active {
+  position: relative;
+  top: 1px;
+}
+
+.faIcons {
+  padding-top: 7px;
+  font-size: 20px;
+}
