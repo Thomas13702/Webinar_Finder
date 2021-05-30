@@ -1,0 +1,34 @@
+.imageBackground {
+  height: 600px;
+  width: 100%;
+  background: #000000 url("/images/World_Map_Blank.svg") no-repeat center center;
+  color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.imageBackground .text {
+  color: rgb(255, 255, 255);
+  font-size: 6rem;
+}
+
+.p {
+  font-size: 3rem;
+}
+
+.link {
+  font-size: 2.5rem;
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
+}
+
+.linkDiv {
+  background: rgb(138, 138, 138);
+  padding: 5px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
