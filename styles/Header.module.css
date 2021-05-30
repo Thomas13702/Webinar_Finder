@@ -25,7 +25,7 @@
 .navOptions {
   padding-left: 25px;
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
   grid-gap: 50px;
   list-style-type: none;
 }
@@ -56,6 +56,11 @@
   color: white;
   cursor: pointer;
   align-items: center;
+}
+
+.search {
+  padding-right: 50px;
+  align-self: center;
 }
 @media (min-width: 730px) {
   .mobileMenu {

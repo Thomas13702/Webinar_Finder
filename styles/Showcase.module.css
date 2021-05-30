@@ -2,7 +2,7 @@
   display: flex;
   margin: 5rem 10% 0 10%;
   width: auto;
-  height: 560px;
+  height: 400px;
 }
 .container1 {
   font-size: 2rem;
@@ -53,6 +53,7 @@
 
   .container1 .text {
     font-size: 20px;
+    padding-top: 30px;
   }
 }
 
