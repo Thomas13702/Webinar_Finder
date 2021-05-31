@@ -1,4 +1,4 @@
-.container {
+/* .container {
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
@@ -118,4 +118,26 @@
     width: 100%;
     flex-direction: column;
   }
+} */
+
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.feedContainer {
+  width: 100%;
+  height: 50vh;
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+
+.feed {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  padding: 22px;
 }
