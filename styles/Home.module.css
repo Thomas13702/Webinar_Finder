@@ -140,4 +140,5 @@
 
 .card {
   padding: 22px;
+  cursor: pointer;
 }
