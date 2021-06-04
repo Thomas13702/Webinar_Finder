@@ -4,15 +4,16 @@ import Link from "next/link";
 import Layout from "@/components/Layout";
 import WebinarItem from "@/components/WebinarItem";
 import { API_URL } from "@/config/index";
+import { name } from "../../helpers/title";
 
-export default function SearchPage({ webinars }) {
+export default function TypesPage({ webinars }) {
   //catch events as a prop
   const router = useRouter(); //use this to get url
-  console.log(webinars);
+
   return (
-    <Layout title="Search Results">
+    <Layout title={name(router.query.term) + " Webinars"}>
       <Link href="/events">Go Back</Link>
-      <h1>Search Results for {router.query.term} </h1>
+      <h1>{name(router.query.term)}</h1>
       {webinars.length === 0 && <h3>No webinars to show</h3>}
 
       {webinars.map((evt) => (
@@ -27,12 +28,7 @@ export async function getServerSideProps({ query: { term } }) {
 
   const query = qs.stringify({
     _where: {
-      _or: [
-        { name_contains: term },
-        { speaker_contains: term },
-        { description_contains: term },
-        { website_contains: term },
-      ],
+      webinarType_contains: term,
     },
   }); //using this so the term is search in name, performers, description, venue
 

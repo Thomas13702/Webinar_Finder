@@ -2,6 +2,7 @@ import { FaBars, FaTimes, FaRegDotCircle } from "react-icons/fa";
 import { SiWebpack } from "react-icons/si";
 import { useState, useEffect } from "react"; //have to bring in when you want to use a specific context
 import Search from "./Search";
+import DropDownMenu from "./DropDownMenu";
 import Link from "next/link";
 import styles from "@/styles/Header.module.css";
 
@@ -10,7 +11,7 @@ export default function Header() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(true);
 
   return (
     <div className={styles.header}>
@@ -30,11 +31,11 @@ export default function Header() {
         >
           {authenticated && (
             <>
-              <li className={styles.option} onClick={closeMobileMenu}>
-                <a href="#">Webinars</a>
+              <li className={styles.option}>
+                <DropDownMenu closeMobileMenu={closeMobileMenu} />
               </li>
               <li className={styles.option} onClick={closeMobileMenu}>
-                <a href="#">Add Events</a>
+                <a href="/webinars/add">Add Events</a>
               </li>
               <li className={styles.option} onClick={closeMobileMenu}>
                 <a href="#">Dashboard</a>
@@ -47,6 +48,9 @@ export default function Header() {
 
           {!authenticated && (
             <>
+              <li className={`${styles.option} ${styles.mobileOption}`}>
+                <DropDownMenu />
+              </li>
               <li className={`${styles.option} ${styles.mobileOption}`}>
                 <Search />
               </li>
@@ -70,6 +74,9 @@ export default function Header() {
       </div>
       {!authenticated && (
         <ul className={styles.signinUp}>
+          <li className={styles.signIn}>
+            <DropDownMenu />
+          </li>
           <li className={styles.search}>
             <Search />
           </li>

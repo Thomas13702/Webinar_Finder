@@ -35,6 +35,8 @@ export default function slug({ webs }) {
         )}
         <h3>Speaker</h3>
         <p>{webs.speaker}</p>
+        <h3>Webinar Type</h3>
+        <p>{webs.webinarType}</p>
         <h3>Description</h3>
         <p>{webs.description}</p>
         <h3>Webinar Link</h3>
