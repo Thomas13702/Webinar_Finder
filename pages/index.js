@@ -18,10 +18,15 @@ export default function Home({ webinars }) {
                 <Link key={webs.id} href={`/webinars/${webs.slug}`}>
                   <div className={styles.card}>
                     <Image
-                      src={webs.image.formats.thumbnail.url}
+                      src={
+                        webs.image
+                          ? webs.image.formats.thumbnail.url
+                          : "/images/event-default.png"
+                      }
                       width={170}
                       height={100}
                     />
+
                     <h4>{webs.name}</h4>
                     <p>{webs.description.slice(0, 15) + "..."}</p>
                   </div>

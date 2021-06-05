@@ -1,4 +1,5 @@
 export const name = (title) => {
+  title = title.toLowerCase();
   if (title === "computerscience") {
     return "Computer Science";
   } else if (title === "business") {

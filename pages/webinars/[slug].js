@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Webinar.module.css";
+import { name } from "../../helpers/title";
 
 export default function slug({ webs }) {
   return (
@@ -36,7 +37,7 @@ export default function slug({ webs }) {
         <h3>Speaker</h3>
         <p>{webs.speaker}</p>
         <h3>Webinar Type</h3>
-        <p>{webs.webinarType}</p>
+        <p>{name(webs.webinarType)}</p>
         <h3>Description</h3>
         <p>{webs.description}</p>
         <h3>Webinar Link</h3>

@@ -10,9 +10,9 @@ import styles from "@/styles/Form.module.css";
 export default function AddEventPage({ token }) {
   const [values, setValues] = useState({
     name: "",
-    performers: "",
-    venue: "",
-    address: "",
+    speaker: "",
+    website: "",
+    webinarType: "",
     date: "",
     time: "",
     description: "",
@@ -32,11 +32,11 @@ export default function AddEventPage({ token }) {
       toast.error("Please fill in all fields"); //toastify for error messages
     }
 
-    const res = await fetch(`${API_URL}/events`, {
+    const res = await fetch(`${API_URL}/webinars`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(values),
     });
@@ -49,7 +49,7 @@ export default function AddEventPage({ token }) {
       toast.error("Something Went Wrong");
     } else {
       const evt = await res.json(); //get data
-      router.push(`/events/${evt.slug}`);
+      router.push(`/webinars/${evt.slug}`);
     }
   };
 
@@ -60,13 +60,13 @@ export default function AddEventPage({ token }) {
 
   return (
     <Layout title="Add New Event">
-      <Link href="/events">Go Back</Link>
+      <Link href="/webinars">Go Back</Link>
       <h1>Add Event</h1>
       <ToastContainer />
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.grid}>
           <div>
-            <label htmlFor="name">Event Name</label>
+            <label htmlFor="name">Webinar Name</label>
             <input
               type="text"
               id="name"
@@ -76,34 +76,40 @@ export default function AddEventPage({ token }) {
             />
           </div>
           <div>
-            <label htmlFor="performers">Performers</label>
+            <label htmlFor="speaker">Speaker</label>
             <input
               type="text"
-              name="performers"
-              id="performers"
-              value={values.performers}
+              name="speaker"
+              id="speaker"
+              value={values.speaker}
               onChange={handleInputChange}
             />
           </div>
           <div>
-            <label htmlFor="venue">Venue</label>
+            <label htmlFor="website">Website</label>
             <input
               type="text"
-              name="venue"
-              id="venue"
-              value={values.venue}
+              name="website"
+              id="website"
+              value={values.website}
               onChange={handleInputChange}
             />
           </div>
           <div>
-            <label htmlFor="address">Address</label>
-            <input
-              type="text"
-              name="address"
-              id="address"
-              value={values.address}
-              onChange={handleInputChange}
-            />
+            <label htmlFor="type">Webinar Type</label>
+
+            <select name="webinarType" id="type" onChange={handleInputChange}>
+              <option value="0">Select Webinar Type</option>
+              <option value="Business">Business</option>
+              <option value="ComputerScience">Computer Science</option>
+              <option value="Leadership">Leadership</option>
+              <option value="HealthandLifestyle">Health and lifestyle</option>
+              <option value="Food">Food</option>
+              <option value="ArtsandCraft">Arts and Crafts</option>
+              <option value="Technology">Technology</option>
+              <option value="Sport">Sport</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
           <div>
             <label htmlFor="date">Date</label>
@@ -127,7 +133,7 @@ export default function AddEventPage({ token }) {
           </div>
         </div>
         <div>
-          <label htmlFor="description">Event Description</label>
+          <label htmlFor="description">Webinar Description</label>
           <textarea
             type="text"
             name="description"
@@ -136,17 +142,17 @@ export default function AddEventPage({ token }) {
             onChange={handleInputChange}
           ></textarea>
         </div>
-        <input type="submit" value="Add Event" className="btn" />
+        <input type="submit" value="Add Webinar" className="btn" />
       </form>
     </Layout>
   );
 }
 
-export async function getServerSideProps({ req }) {
-  const { token } = parseCookies(req); //get token
-  return {
-    props: {
-      token,
-    },
-  };
-}
+// export async function getServerSideProps({ req }) {
+//   const { token } = parseCookies(req); //get token
+//   return {
+//     props: {
+//       token,
+//     },
+//   };
+// }
