@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Layout from "@/components/Layout";
 import Modal from "@/components/Modal";
-// import ImageUpload from "@/components/ImageUpload";
+import ImageUpload from "@/components/ImageUpload";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
 
@@ -69,7 +69,7 @@ export default function EditEventPage({ webs }) {
   };
 
   const imageUploaded = async (e) => {
-    const res = await fetch(`${API_URL}/events/${webs.id}`); //get data from API for event we have
+    const res = await fetch(`${API_URL}/webinars/${webs.id}`); //get data from API for event we have
     const data = await res.json(); // get data in JSON format
     setImagePreview(data.image.formats.thumbnail.url); // set preview to thumbnail image in data
     setShowModal(false); //close modal
@@ -181,12 +181,11 @@ export default function EditEventPage({ webs }) {
       </div>
 
       <Modal show={showModal} onClose={() => setShowModal(false)}>
-        ImageUpload
-        {/* <ImageUpload
+        <ImageUpload
           websId={webs.id}
           imageUploaded={imageUploaded}
-          token={token}
-        /> */}
+          // token={token}
+        />
       </Modal>
     </Layout>
   );
