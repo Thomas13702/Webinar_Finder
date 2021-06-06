@@ -1,3 +1,5 @@
+import PageNotFound from "@/components/PageNotFound";
+
 export const name = (title) => {
   title = title.toLowerCase();
   if (title === "computerscience") {
@@ -19,6 +21,6 @@ export const name = (title) => {
   } else if (title === "other") {
     return "Other";
   } else {
-    return title;
+    return <PageNotFound />;
   }
 };

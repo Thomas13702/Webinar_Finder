@@ -4,11 +4,36 @@ import Link from "next/link";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Webinar.module.css";
 import { name } from "../../helpers/title";
+import { useRouter } from "next/router";
 
 export default function slug({ webs }) {
+  const router = useRouter();
+  const deleteEvent = async (e) => {
+    if (confirm("Are you sure?")) {
+      const res = await fetch(`${API_URL}/webinars/${webs.id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        toast.error(data.message);
+      } else {
+        router.push("/");
+      }
+    }
+  };
   return (
     <Layout>
       <div className={styles.event}>
+        <div className={styles.controls}>
+          <a onClick={deleteEvent} href="#" className={styles.delete}>
+            Delete Event
+          </a>
+
+          <Link href={`/webinars/edit/${webs.id}`}>
+            <a className={styles.edit}>Edit Event</a>
+          </Link>
+        </div>
+
         <span>
           {new Date(webs.date).toLocaleDateString("en-US")} at {webs.time}
         </span>
