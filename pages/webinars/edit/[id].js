@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import Layout from "@/components/Layout";
-// import Modal from "@/components/Modal";
+import Modal from "@/components/Modal";
 // import ImageUpload from "@/components/ImageUpload";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
@@ -26,7 +26,7 @@ export default function EditEventPage({ webs }) {
     webs.image ? webs.image.formats.thumbnail.url : null
   );
 
-  //   const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
 
@@ -180,14 +180,14 @@ export default function EditEventPage({ webs }) {
         </button>
       </div>
 
-      {/* <Modal show={showModal} onClose={() => setShowModal(false)}>
-        
-        <ImageUpload
+      <Modal show={showModal} onClose={() => setShowModal(false)}>
+        ImageUpload
+        {/* <ImageUpload
           websId={webs.id}
           imageUploaded={imageUploaded}
           token={token}
-        />
-      </Modal> */}
+        /> */}
+      </Modal>
     </Layout>
   );
 }
