@@ -1,10 +1,11 @@
 import { FaBars, FaTimes, FaRegDotCircle } from "react-icons/fa";
 import { SiWebpack } from "react-icons/si";
-import { useState, useEffect } from "react"; //have to bring in when you want to use a specific context
+import { useState, useEffect, useContext } from "react"; //have to bring in when you want to use a specific context
 import Search from "./Search";
 import DropDownMenu from "./DropDownMenu";
 import Link from "next/link";
 import styles from "@/styles/Header.module.css";
+import AuthContext from "@/context/AuthContext";
 
 export default function Header() {
   const [click, setClick] = useState(false);
@@ -12,6 +13,12 @@ export default function Header() {
   const closeMobileMenu = () => setClick(false);
 
   const [authenticated, setAuthenticated] = useState(true);
+
+  const { user, logout, login } = useContext(AuthContext);
+
+  useEffect(() => {
+    user ? setAuthenticated(true) : setAuthenticated(false);
+  });
 
   return (
     <div className={styles.header}>
@@ -38,10 +45,21 @@ export default function Header() {
                 <a href="/webinars/add">Add Events</a>
               </li>
               <li className={styles.option} onClick={closeMobileMenu}>
-                <a href="#">Dashboard</a>
+                <a href="/account/dashboard">Dashboard</a>
               </li>
               <li className={styles.option}>
                 <Search />
+              </li>
+              <li
+                className={`${styles.option}`}
+                onClick={() => {
+                  closeMobileMenu;
+                  logout();
+                }}
+              >
+                <a href="#" className={styles.signUp}>
+                  Logout
+                </a>
               </li>
             </>
           )}
@@ -58,13 +76,13 @@ export default function Header() {
                 className={`${styles.option} ${styles.mobileOption}`}
                 onClick={closeMobileMenu}
               >
-                <a href="#">SIGN-IN</a>
+                <a href="/account/login">SIGN-IN</a>
               </li>
               <li
                 className={`${styles.option} ${styles.mobileOption}`}
                 onClick={closeMobileMenu}
               >
-                <a href="" className={styles.signUp}>
+                <a href="/account/register" className={styles.signUp}>
                   SIGN-UP
                 </a>
               </li>
@@ -81,10 +99,10 @@ export default function Header() {
             <Search />
           </li>
           <li className={styles.signIn} onClick={closeMobileMenu}>
-            <a href="#">SIGN-IN</a>
+            <a href="/account/login">SIGN-IN</a>
           </li>
           <li onClick={closeMobileMenu}>
-            <a href="" className={styles.signupBtn}>
+            <a href="/account/register" className={styles.signupBtn}>
               SIGN-UP
             </a>
           </li>
