@@ -195,6 +195,8 @@ export async function getServerSideProps({ params: { id }, req }) {
   const res = await fetch(`${API_URL}/webinars/${id}`);
   const webs = await res.json();
 
+  console.log(req.headers.cookie);
+
   return {
     props: {
       webs,
