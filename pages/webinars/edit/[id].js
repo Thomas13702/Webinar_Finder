@@ -1,4 +1,5 @@
 import { ToastContainer, toast } from "react-toastify";
+import { parseCookies } from "@/helpers/index";
 import "react-toastify/dist/ReactToastify.min.css";
 import { FaImage } from "react-icons/fa";
 import { useState } from "react";
@@ -11,7 +12,7 @@ import ImageUpload from "@/components/ImageUpload";
 import { API_URL } from "@/config/index";
 import styles from "@/styles/Form.module.css";
 
-export default function EditEventPage({ webs }) {
+export default function EditEventPage({ webs, token }) {
   const [values, setValues] = useState({
     name: webs.name,
     speaker: webs.speaker,
@@ -46,7 +47,7 @@ export default function EditEventPage({ webs }) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(values),
     });
@@ -184,7 +185,7 @@ export default function EditEventPage({ webs }) {
         <ImageUpload
           websId={webs.id}
           imageUploaded={imageUploaded}
-          // token={token}
+          token={token}
         />
       </Modal>
     </Layout>
@@ -192,14 +193,14 @@ export default function EditEventPage({ webs }) {
 }
 
 export async function getServerSideProps({ params: { id }, req }) {
+  const { token } = parseCookies(req);
   const res = await fetch(`${API_URL}/webinars/${id}`);
   const webs = await res.json();
-
-  console.log(req.headers.cookie);
 
   return {
     props: {
       webs,
+      token,
     },
   };
 }
