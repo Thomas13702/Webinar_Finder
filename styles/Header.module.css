@@ -40,6 +40,7 @@
   display: flex;
   padding: 0px 5px;
   list-style-type: none;
+  align-items: center;
 }
 .signIn {
   padding-right: 50px;
@@ -49,13 +50,14 @@
   color: white;
 }
 .signupBtn {
-  padding: 10px 10px;
+  padding: 10px;
   height: 2.4rem;
   border-radius: 3px;
   background: #0586a8;
   color: white;
   cursor: pointer;
-  align-items: center;
+
+  justify-content: center;
 }
 
 .search {
@@ -63,10 +65,9 @@
   align-self: center;
 }
 
-/* .option {
-  display: flex;
-  align-items: center;
-} */
+.option {
+  align-self: center;
+}
 
 @media (min-width: 730px) {
   .mobileMenu {

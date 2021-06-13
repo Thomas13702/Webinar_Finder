@@ -11,7 +11,7 @@ export default function SearchPage({ webinars }) {
   console.log(webinars);
   return (
     <Layout title="Search Results">
-      <Link href="/events">Go Back</Link>
+      <Link href="/">Go Back</Link>
       <h1>Search Results for {router.query.term} </h1>
       {webinars.length === 0 && <h3>No webinars to show</h3>}
 
