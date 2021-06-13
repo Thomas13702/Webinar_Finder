@@ -1,3 +1,4 @@
+import { parseCookies } from "@/helpers//index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { useState } from "react";
@@ -36,7 +37,7 @@ export default function AddEventPage({ token }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(values),
     });
@@ -148,11 +149,11 @@ export default function AddEventPage({ token }) {
   );
 }
 
-// export async function getServerSideProps({ req }) {
-//   const { token } = parseCookies(req); //get token
-//   return {
-//     props: {
-//       token,
-//     },
-//   };
-// }
+export async function getServerSideProps({ req }) {
+  const { token } = parseCookies(req); //get token
+  return {
+    props: {
+      token,
+    },
+  };
+}
