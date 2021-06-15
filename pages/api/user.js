@@ -4,7 +4,7 @@ import cookie from "cookie";
 export default async (req, res) => {
   if (req.method === "GET") {
     if (!req.headers.cookie) {
-      res.status(403).js9on({ message: "Not Authorised" });
+      res.status(403).json({ message: "Not Authorised" });
       return;
     }
     const { token } = cookie.parse(req.headers.cookie);

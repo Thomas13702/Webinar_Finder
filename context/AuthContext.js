@@ -81,8 +81,55 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  //Forgotten Password
+  const forgotPassword = async ({ email: identifier }) => {
+    const res = await fetch(`${NEXT_URL}/api/forgot`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        identifier,
+      }),
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      setUser(data.user);
+      // router.push("/account/dashboard");
+    } else {
+      setError(data.message);
+      setError(null);
+    }
+  };
+
+  //Reset Password
+  const resetPassword = async ({ code, password }) => {
+    const res = await fetch(`${NEXT_URL}/api/reset`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        code,
+        password,
+      }),
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      setUser(data.user);
+      router.push("/account/dashboard");
+    } else {
+      setError(data.message);
+      setError(null);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, error, register, login, logout }}>
+    <AuthContext.Provider
+      value={{ user, error, register, login, logout, forgotPassword }}
+    >
       {children}
     </AuthContext.Provider>
   );
