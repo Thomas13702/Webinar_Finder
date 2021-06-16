@@ -96,7 +96,7 @@ export const AuthProvider = ({ children }) => {
 
     if (res.ok) {
       setUser(data.user);
-      // router.push("/account/dashboard");
+      router.push("/account/enterresetcode");
     } else {
       setError(data.message);
       setError(null);
@@ -128,7 +128,15 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, error, register, login, logout, forgotPassword }}
+      value={{
+        user,
+        error,
+        register,
+        login,
+        logout,
+        forgotPassword,
+        resetPassword,
+      }}
     >
       {children}
     </AuthContext.Provider>

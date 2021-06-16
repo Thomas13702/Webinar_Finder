@@ -33,7 +33,7 @@ export default function resetPassword() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <input type="submit" value="Login" className="btn" />
+          <input type="submit" value="Submit" className="btn" />
         </form>
         <p>
           Don't have an account? <Link href="/account/register">Register</Link>{" "}
